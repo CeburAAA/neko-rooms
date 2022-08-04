@@ -11,6 +11,10 @@ services:
     restart: "unless-stopped"
     environment:
       - "TZ=Europe/Vienna"
+      - "NEKO_ROOMS_MOUNTS_WHITELIST=/"
+      - "NEKO_ROOMS_STORAGE_ENABLED=true"
+      - "NEKO_ROOMS_STORAGE_INTERNAL=/data"
+      - "NEKO_ROOMS_STORAGE_EXTERNAL=/opt/neko-rooms/data"
       - "NEKO_ROOMS_MUX=true"
       - "NEKO_ROOMS_EPR=59000-59049"
       - "NEKO_ROOMS_NAT1TO1=127.0.0.1" # IP address of your server that is reachable from client
@@ -22,3 +26,4 @@ services:
       - "8080:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/opt/neko-rooms/data:/data"
